@@ -12,21 +12,29 @@
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
         <h1 class="text-center">Login</h1>
+        <div th:if="${param.emailWrong}">
+          <div class="alert alert-info">Email have not already existed</div>
+        </div>
+        <div th:if="${param.passwordWrong}">
+          <div class="alert alert-warn">Password wrong</div>
+        </div>
         <div class="card-body">
-          <form method="get">
+          <form th:action="@{/login}" method="post" th:object="${userdto}">
             <div class="form-group">
               <input
-                      name="username"
+                      name="email"
+                      th:filed="email"
                       type="text"
-                      class="form-control" placeholder="Username">
+                      class="form-control" placeholder="Email">
             </div>
             <div class="form-group">
               <input
-                      name="passwork"
-                      type="text"
-                      class="form-control" placeholder="Passwork">
+                      name="password"
+                      th:filed="password"
+                      type="password"
+                      class="form-control" placeholder="Password">
             </div>
-            <div class="box-footer">
+            <div class="form-group mb-3">
               <button type="submit" class="btn btn-primary">Login</button>
               <a href="/" th:href="@{/registration}">Sign up here</a>
             </div>

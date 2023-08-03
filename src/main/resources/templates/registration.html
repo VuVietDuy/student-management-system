@@ -19,6 +19,10 @@
           to our awesome app!</div>
       </div>
 
+      <div th:if="${param.failed}">
+        <div class="alert alert-info">Email have already existed</div>
+      </div>
+
       <h1 class="text-center">Register</h1>
       <div class="card-body">
         <form th:action="@{/registration}" method="post" th:object="${user}">
@@ -57,7 +61,7 @@
           </div>
           <div class="form-group">
             <button type="submit" class="btn btn-primary">Register</button>
-            <span>Already have a acount? <a href="/" th:href="@{/login}">Login here</a></span>
+            <span>Already have an acount? <a href="/" th:href="@{/login}">Login here</a></span>
           </div>
         </form>
       </div>

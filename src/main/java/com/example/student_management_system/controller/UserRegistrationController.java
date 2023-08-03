@@ -31,7 +31,10 @@ public class UserRegistrationController {
 
     @PostMapping
     public String registerUserAcount(@ModelAttribute("user") UserRegistrationDto user) {
-        userService.save(user);
-        return "redirect:registration?success";
+        if (!userService.checkExistingUserByEmail(user.getEmail())) {
+            userService.save(user);
+            return "redirect:registration?success";
+        }
+        return "redirect:registration?failed";
     }
 }

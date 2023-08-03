@@ -1,4 +1,4 @@
-package com.example.student_management_system.impl;
+package com.example.student_management_system.service.impl;
 
 import com.example.student_management_system.dto.UserRegistrationDto;
 import com.example.student_management_system.entity.Role;
@@ -28,5 +28,26 @@ public class UserServiceImpl implements UserService {
                 userRegistrationDto.getEmail(),
                 userRegistrationDto.getPassword(), Arrays.asList(new Role("ROLE_USER")));
         return userRepository.save(user);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return userRepository.getUserByEmail(email);
+    }
+
+    @Override
+    public boolean checkPasswordAcount(String email, String password) {
+        User user = userRepository.getUserByEmail(email);
+        if (user.getPassword().equals(password) ) return true;
+        return false;
+    }
+
+    @Override
+    public boolean checkExistingUserByEmail(String email) {
+        User existingUser = userRepository.findUserByEmail(email);
+        if (existingUser == null) {
+            return false;
+        }
+        return true;
     }
 }
