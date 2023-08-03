@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeLeaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" th:href="@{/students}">Student Management System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/students}">Students</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/students/new}">Create student</a>
+            </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Update student</h1>
+            <div class="card-body">
+                <form th:action="@{/students/{id} (id=${stu.id})}" th:object = "${stu}" method="post">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input
+                                name="firstName"
+                                th:filed="*{firstName}"
+                                th:value="${stu.firstName}"
+                                type="text"
+                                class="form-control" placeholder="Enter first name">
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input
+                                name="lastName"
+                                th:value="${stu.lastName}"
+                                th:field="*{lastName}"
+                                type="text"
+                                class="form-control" placeholder="Enter last name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input
+                                name="email"
+                                th:value="${stu.email}"
+                                th:filed="*{email}"
+                                type="email"
+                                class="form-control" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
