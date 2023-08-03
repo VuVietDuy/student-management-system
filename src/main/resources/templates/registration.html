@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeLeaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+<body>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 container justify-content-center">
+
+      <div th:if="${param.success}">
+        <div class="alert alert-info">You've successfully registered
+          to our awesome app!</div>
+      </div>
+
+      <h1 class="text-center">Register</h1>
+      <div class="card-body">
+        <form th:action="@{/registration}" method="post" th:object="${user}">
+          <div class="form-group">
+            <label class="control-Label" >First name</label>
+            <input
+                    id="firstName"
+                    name="firstName"
+                    th:filed="firstName"
+                    type="text"
+                    class="form-control" placeholder="First name" autofocus="autofocus">
+          </div>
+          <div class="form-group">
+            <label class="control-Label" >Last name</label>
+            <input
+                    name="lastName"
+                    th:filed="lastName"
+                    type="text"
+                    class="form-control" placeholder="Last name">
+          </div>
+          <div class="form-group">
+            <label class="control-Label" >Email</label>
+            <input
+                    name="email"
+                    th:filed="email"
+                    type="email"
+                    class="form-control" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label class="control-Label" >Password</label>
+            <input
+                    name="password"
+                    th:filed="password"
+                    type="password"
+                    class="form-control" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Register</button>
+            <span>Already have a acount? <a href="/" th:href="@{/login}">Login here</a></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
