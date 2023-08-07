@@ -1,0 +1,36 @@
+Quản lý Sinh viên:
+
+POST /api/students: Tạo mới thông tin một sinh viên.
+GET /api/students/{id}: Lấy thông tin chi tiết của một sinh viên theo ID.
+PUT /api/students/{id}: Cập nhật thông tin một sinh viên theo ID.
+DELETE /api/students/{id}: Xóa thông tin một sinh viên theo ID.
+
+Xem danh sách Sinh viên:
+GET /api/students: Lấy danh sách tất cả các sinh viên trong hệ thống.
+GET /api/students?classId={classId}&majorId={majorId}: Lọc danh sách sinh viên theo lớp và khoa học.
+
+Quản lý Lớp học:
+POST /api/classes: Tạo mới thông tin một lớp học.
+GET /api/classes/{id}: Lấy thông tin chi tiết của một lớp học theo ID.
+PUT /api/classes/{id}: Cập nhật thông tin một lớp học theo ID.
+DELETE /api/classes/{id}: Xóa thông tin một lớp học theo ID.
+
+Xem thống kê và báo cáo:
+GET /api/statistics/total-students: Thống kê tổng số lượng sinh viên trong hệ thống.
+GET /api/statistics/average-scores: Thống kê điểm trung bình của tất cả sinh viên hoặc theo lớp, khoa học cụ thể.
+GET /api/reports/outstanding-students: Báo cáo danh sách sinh viên xuất sắc.
+
+Tìm kiếm và tra cứu:
+GET /api/search/students?query={query}: Tìm kiếm sinh viên theo tên hoặc mã số.
+GET /api/students/{studentId}/transcript: Tra cứu bảng điểm của một sinh viên.
+
+Phân quyền và Đăng nhập:
+POST /api/auth/login: Đăng nhập hệ thống và trả về token xác thực.
+GET /api/users/me: Lấy thông tin người dùng hiện tại.
+POST /api/users: Tạo mới tài khoản người dùng.
+
+Tương tác với Thời khoá biểu:
+GET /api/schedules/{studentId}: Lấy thời khoá biểu của một sinh viên.
+
+Tương tác với Học phí:
+GET /api/fees/{studentId}: Lấy thông tin học phí, thanh toán và nợ học phí của sinh viên.

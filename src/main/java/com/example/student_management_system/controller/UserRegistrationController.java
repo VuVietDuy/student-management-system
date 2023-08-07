@@ -13,28 +13,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/registration")
 public class UserRegistrationController {
-    private UserService userService;
-
-    public UserRegistrationController(UserService userService) {
-        this.userService = userService;
-    }
-
-    @ModelAttribute("user")
-    public UserRegistrationDto userRegistrationDto() {
-        return new UserRegistrationDto();
-    }
-
-    @GetMapping
-    public String showRegistrationForm() {
-        return "registration";
-    }
-
-    @PostMapping
-    public String registerUserAcount(@ModelAttribute("user") UserRegistrationDto user) {
-        if (!userService.checkExistingUserByEmail(user.getEmail())) {
-            userService.save(user);
-            return "redirect:registration?success";
-        }
-        return "redirect:registration?failed";
-    }
+//    private UserService userService;
+//
+//    public UserRegistrationController(UserService userService) {
+//        this.userService = userService;
+//    }
+//
+//    @ModelAttribute("user")
+//    public UserRegistrationDto userRegistrationDto() {
+//        return new UserRegistrationDto();
+//    }
+//
+//    @GetMapping
+//    public String showRegistrationForm() {
+//        return "registration";
+//    }
+//
+//    @PostMapping
+//    public String registerUserAcount(@ModelAttribute("user") UserRegistrationDto user) {
+//        if (!userService.checkExistingUserByEmail(user.getEmail())) {
+//            userService.save(user);
+//            return "redirect:registration?success";
+//        }
+//        return "redirect:registration?failed";
+//    }
 }

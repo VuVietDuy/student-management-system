@@ -1,7 +1,7 @@
 package com.example.student_management_system.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.util.Date;
@@ -9,23 +9,20 @@ import java.util.List;
 
 @Data
 @Entity
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "student")
-public class Student {
+@Table(name = "instructor")
+public class Instructor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "first_name", nullable = false)
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", nullable = false)
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email")
     private String email;
 
 //    @Column(name = "date_of_birth")
@@ -35,21 +32,18 @@ public class Student {
 //    private int gender;
 
     @ManyToOne
-    @JoinColumn(name = "class_id")
-    private Classes classes;
-
-    @ManyToOne
     @JoinColumn(name = "major_id")
     private Major major;
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-            name = "student_course",
-            joinColumns = @JoinColumn(name = "student_id"),
+            name = "instructor_course",
+            joinColumns = @JoinColumn(name = "instructor_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private List<Course> courses;
 
     @CreationTimestamp
     private Date create_at;
+
 }

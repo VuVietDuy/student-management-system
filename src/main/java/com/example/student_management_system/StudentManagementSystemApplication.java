@@ -1,11 +1,23 @@
 package com.example.student_management_system;
 
+import com.example.student_management_system.entity.Course;
+import com.example.student_management_system.entity.Instructor;
+import com.example.student_management_system.entity.Major;
 import com.example.student_management_system.entity.Student;
+import com.example.student_management_system.repository.CourseRepository;
 import com.example.student_management_system.repository.StudentRepository;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class StudentManagementSystemApplication implements CommandLineRunner {
@@ -14,17 +26,13 @@ public class StudentManagementSystemApplication implements CommandLineRunner {
         SpringApplication.run(StudentManagementSystemApplication.class, args);
     }
 
-    @Autowired
-    private StudentRepository studentRepository;
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
+
     @Override
     public void run(String... args) throws Exception {
-//        Student student1 = new Student("Duy", "Vu Viet", "duy@gmail.com");
-//        studentRepository.save(student1);
-//
-//        Student student2 = new Student("Nhung", "Do Hong", "nhung@gmail.com");
-//        studentRepository.save(student2);
-//
-//        Student student3 = new Student("Dung", "Tran Thi Phuong", "dung@gmail.com");
-//        studentRepository.save(student3);
+
     }
 }
